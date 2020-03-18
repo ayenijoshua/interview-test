@@ -14,8 +14,8 @@ class UserController extends Controller
 
     protected $user;
 
-    function __construct(){
-        //$this->user = $user;
+    function __construct(UserRepository $user){
+        $this->user = $user;
         $this->middleware('admin_role_not_delete_user')->only('destroy');
     }
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
     public function index()
     {
         try{
-            return response()->json(User::all());
+            return response()->json($this->user->all());
         }catch(\Exception $e){
            return $this->exceptionResponse($e);
         }

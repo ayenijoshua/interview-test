@@ -22,6 +22,6 @@ Route::post('login', 'AUth\LoginController@login')->name('api.login');
 //signup
 Route::post('signup', 'Auth\LoginController@signUp')->name('api.signup');
 
-Route::get('users','Api\UserController@index');
+Route::get('users','API\UserController@index');
 
 Route::delete('delete-user','API\UserController@destroy')->middleware();
